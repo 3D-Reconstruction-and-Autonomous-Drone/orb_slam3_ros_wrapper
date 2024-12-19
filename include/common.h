@@ -6,7 +6,7 @@
 #include <queue>
 #include <thread>
 #include <mutex>
-#include <Eigen/Dense>
+#include <eigen3/Eigen/Dense>
 
 #include <ros/ros.h>
 #include <ros/time.h>
