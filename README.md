@@ -100,7 +100,7 @@ If you cannot build the package, please make sure these steps are followed:
   ```
   git checkout c++14_comp
   ```
-  Then, rebuild the package by running.
+Then, rebuild the package by running.
 2. Try to switch the Pangolin to version v0.6. You can do this by navigating to the Pangolin folder and run this command line:
   ```
   git checkout v0.6
