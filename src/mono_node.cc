@@ -62,7 +62,7 @@ int main(int argc, char **argv)
     ORB_SLAM3::System SLAM(voc_file, settings_file, sensor_type, enable_pangolin);
     ImageGrabber igb(&SLAM);
 
-    ros::Subscriber sub_img0 = node_handler.subscribe("/camera/image_raw", 1, &ImageGrabber::GrabImage, &igb);
+    ros::Subscriber sub_img0 = node_handler.subscribe("/tello_camera", 1, &ImageGrabber::GrabImage, &igb);
 
     setup_ros_publishers(node_handler, image_transport, rpy_rad);
 
@@ -89,6 +89,9 @@ void ImageGrabber::GrabImage(const sensor_msgs::ImageConstPtr& msg)
         ROS_ERROR("cv_bridge exception: %s", e.what());
         return;
     }
+
+    // Print the size of the image
+    ROS_INFO("Image size: %d x %d", cv_ptr->image.cols, cv_ptr->image.rows);
 
     // ORB-SLAM3 runs in TrackMonocular()
     Sophus::SE3f Tcc0 = mpSLAM->TrackMonocular(cv_ptr->image, cv_ptr->header.stamp.toSec());

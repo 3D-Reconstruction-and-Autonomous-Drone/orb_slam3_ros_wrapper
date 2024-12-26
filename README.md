@@ -92,3 +92,22 @@ The following topics are published by each node:
 # Params
 - Enable / disable pangolin viewer: `enable_pangolin`
 - For monocular/stereo case, use `world_roll`, `world_pitch`, `world_yaw` in the launch file to rotate the world frame if necessary (otherwise the first KF will be the world frame). The world frame will be rotated by the provided roll-pitch-yaw angles (in rad) in that order.
+
+# Potential issues (for MLDA members)
+## Installation
+If you cannot build the package, please make sure these steps are followed:
+1. Make sure that you followed the installation steps above correctly. If you are running on C++14 (most likely on Ubuntu 20.04), please navigate to ORB-SLAM3 folder and run:
+  ```
+  git checkout c++14_comp
+  ```
+  Then, rebuild the package by running.
+2. Try to switch the Pangolin to version v0.6. You can do this by navigating to the Pangolin folder and run this command line:
+  ```
+  git checkout v0.6
+  ```
+3. If you still cannot build the package, and the problem is related to Eigen3 library, please navigate to the folder of ORB-SLAM3 and adjust the CmakeLists.txt files to the correct path of Eigen3 library. You can do this by adding `include_directories(/usr/include/eigen3)` before the line `find_package(Eigen3 3.1.0 REQUIRED)`. Most likely, you have to do this in the following files:
+  - ORB_SLAM3/CMakeLists.txt
+  - ORB_SLAM3/Thirdparty/g2o/CMakeLists.txt
+  - ORB_SLAM3/Thirdparty/Sophus/CMakeLists.txt
+
+4. If you still cannot build the package, please try to debug to see the error happened in which build step. Since the `build.sh` script builds multiple packages, you can comment out and try to build one by one, to see which package causes the error. Or you can contact me (Bao) to get support.
