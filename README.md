@@ -101,10 +101,12 @@ If you cannot build the package, please make sure these steps are followed:
   git checkout c++14_comp
   ```
 Then, rebuild the package by running.
+
 2. Try to switch the Pangolin to version v0.6. You can do this by navigating to the Pangolin folder and run this command line:
   ```
   git checkout v0.6
   ```
+  
 3. If you still cannot build the package, and the problem is related to Eigen3 library, please navigate to the folder of ORB-SLAM3 and adjust the CmakeLists.txt files to the correct path of Eigen3 library. You can do this by adding `include_directories(/usr/include/eigen3)` before the line `find_package(Eigen3 3.1.0 REQUIRED)`. Most likely, you have to do this in the following files:
   - ORB_SLAM3/CMakeLists.txt
   - ORB_SLAM3/Thirdparty/g2o/CMakeLists.txt
